@@ -1,20 +1,32 @@
 <template>
   <div id="app">
     <div class="color-picker-container">
-      <color-picker></color-picker>
+      a{{color}}a
+      <color-picker v-model="color"></color-picker>
+      }
     </div>
-    <hello></hello>
+    <div class="grid-container">
+      <pixel-grid :current-color="color"></pixel-grid>
+    </div>
+    <!-- <hello></hello> -->
   </div>
 </template>
 
 <script>
 import Hello from './components/Hello'
 import ColorPicker from './components/ColorPicker'
+import PixelGrid from './components/PixelGrid'
 export default {
   name: 'app',
+  data() {
+    return {
+      color: null   
+    }
+  },
   components: {
     Hello,
-    ColorPicker
+    ColorPicker,
+    PixelGrid
   }
 }
 </script>
@@ -29,10 +41,15 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  display: flex;
 }
 
 .color-picker-container {
-  width: 50%;
+  width: 10%;
   height: 90%;
+}
+.grid-container {
+  height: 90%;
+  width: 80%;
 }
 </style>
