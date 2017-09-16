@@ -1,9 +1,7 @@
 <template>
   <div id="app">
     <div class="color-picker-container">
-      a{{color}}a
       <color-picker v-model="color"></color-picker>
-      }
     </div>
     <div class="grid-container">
       <pixel-grid :current-color="color"></pixel-grid>
@@ -32,23 +30,29 @@ export default {
 </script>
 
 <style>
-#app {
+body {
+  margin: 0;
   width: 100vw;
   height: 100vh;
+}
+#app {
+  width: 100%;
+  height: 100%;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
   display: flex;
 }
 
 .color-picker-container {
+  margin-top: 5%;
   width: 10%;
   height: 90%;
 }
 .grid-container {
+    margin-top: 5%;
   height: 90%;
   width: 80%;
 }

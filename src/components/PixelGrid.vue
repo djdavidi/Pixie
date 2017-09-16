@@ -1,10 +1,11 @@
 <template>
   <div class="grid">
     <div class="pixel" v-for="n in 1024" :id="'pixel-'+ n"
-      @click="setPixelColor($event)">&nbsp;</div>
+      @click="setPixelColor($event)" @mouseover="setPixelColor($event,'hover')">&nbsp;</div>
   </div>
 </template>
-
+<!-- need to add total reset button, and eraser which sets individual pixels to default value
+also export option with background or just sprites? or fill it entirely with diff color? -->
 <script>
 export default {
   name: 'pixelGrid',
@@ -15,12 +16,17 @@ export default {
     }
   },
   methods: {
-    setPixelColor(event) {
+    setPixelColor(event, hover) {
       // if(event.target.style.background !== original) {
       //   then set it to original
       // }
       // return ""
-      console.log("event", event.currentTarget)
+      if (hover && event.which !== 1) {
+        return;
+      } else {
+        event.target.style.background = this.currentColor;
+      }
+      console.log("event", event)
       event.target.style.background = this.currentColor;
       console.log("this", this.style)
       //    console.log("event", event.target)
