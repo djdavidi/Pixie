@@ -1,7 +1,6 @@
 <template>
-  <div class="grid">
-    <div class="pixel" v-for="n in 1024" :id="'pixel-'+ n"
-      @click="setPixelColor($event)" @mouseover="setPixelColor($event,'hover')">&nbsp;</div>
+  <div class="grid" @click="setPixelColor($event)" @mouseover="setPixelColor($event,'hover')">
+    <div class="pixel" v-for="n in 1024" :id="'pixel-'+ n">&nbsp;</div>
   </div>
 </template>
 <!-- need to add total reset button, and eraser which sets individual pixels to default value
@@ -17,28 +16,16 @@ export default {
   },
   methods: {
     setPixelColor(event, hover) {
-      // if(event.target.style.background !== original) {
-      //   then set it to original
-      // }
-      // return ""
       if (hover && event.which !== 1) {
         return;
-      } else {
+      } else if(!event.target.matches("div.grid")) {
+        console.log("here", event)
         event.target.style.background = this.currentColor;
       }
-      console.log("event", event)
-      event.target.style.background = this.currentColor;
-      console.log("this", this.style)
-      //    console.log("event", event.target)
-      // event.arget.background='green'
-      // console.log("this", this.style)
     }
   }
 }
 
-// mousedown- every hover push the element ids to array, 
-// on mouseup, get unique and fill all of them
-// also need on mousedown to trail it so hover would set it somehow?
 // have a function to read of all colors in grid to read out?
 // maybe also add cut and paste functionality 
 </script>

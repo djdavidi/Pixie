@@ -1,5 +1,6 @@
 <template>
   <div class="color-picker">
+  <!-- need to add hex input -->
   <!-- need to add labels for ranges, and spacing and highlight on selected patch -->
   	<!-- <div class="range-container"> -->
 		<input type="range" @change="calculateColor" v-model="hue">
